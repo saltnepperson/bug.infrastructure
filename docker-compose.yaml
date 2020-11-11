@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+
+  bug.ui:
+    build:
+        context: ../bug.ui/.
+    container_name: bug.ui
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ../bug.ui/:/var/www
+    networks:
+      - bug_net
+    ports:
+      - 8080:8080
+
+networks:
+  bug_net:
+      driver: bridge
